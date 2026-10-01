@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sistema simples e elegante para controlar seus gastos pessoais.">
+  <title>Meu Controle de Gastos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <div class="brand-mark" aria-hidden="true">↗</div>
+      <div>
+        <p class="eyebrow">ORGANIZE. ACOMPANHE. PLANEJE.</p>
+        <h1>Meu controle<br><span>de gastos.</span></h1>
+        <p class="subtitle">Uma visão clara para cuidar melhor do seu dinheiro.</p>
+      </div>
+    </header>
+
+    <section class="summary-grid" aria-label="Resumo financeiro">
+      <article class="summary-card summary-card--highlight">
+        <div class="summary-icon" aria-hidden="true">◒</div>
+        <div>
+          <p class="card-label">TOTAL GASTO</p>
+          <p class="total-value" id="total-value">R$ 0,00</p>
+        </div>
+      </article>
+      <article class="summary-card">
+        <div class="summary-icon summary-icon--soft" aria-hidden="true">#</div>
+        <div>
+          <p class="card-label">LANÇAMENTOS</p>
+          <p class="count-value" id="expense-count">0 gastos</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="content-grid">
+      <section class="panel form-panel" aria-labelledby="form-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">NOVO LANÇAMENTO</p>
+            <h2 id="form-title">Adicionar gasto</h2>
+          </div>
+          <span class="plus-badge" aria-hidden="true">+</span>
+        </div>
+        <form id="expense-form">
+          <div class="field-group">
+            <label for="description">Descrição</label>
+            <input id="description" name="description" type="text" placeholder="Ex.: Almoço" maxlength="60" required>
+          </div>
+          <div class="form-row">
+            <div class="field-group">
+              <label for="amount">Valor</label>
+              <div class="input-prefix"><span>R$</span><input id="amount" name="amount" type="number" min="0.01" step="0.01" placeholder="0,00" required></div>
+            </div>
+            <div class="field-group">
+              <label for="category">Categoria</label>
+              <select id="category" name="category" required>
+                <option value="" disabled selected>Escolha...</option>
+                <option value="Alimentação">🍴 Alimentação</option>
+                <option value="Transporte">🚗 Transporte</option>
+                <option value="Casa">🏠 Casa</option>
+                <option value="Lazer">🎧 Lazer</option>
+                <option value="Saúde">💚 Saúde</option>
+                <option value="Outros">✦ Outros</option>
+              </select>
+            </div>
+          </div>
+          <button class="primary-button" type="submit"><span>Adicionar gasto</span><strong>→</strong></button>
+        </form>
+      </section>
+
+      <section class="panel list-panel" aria-labelledby="list-title">
+        <div class="section-heading list-heading">
+          <div>
+            <p class="eyebrow">HISTÓRICO</p>
+            <h2 id="list-title">Seus gastos</h2>
+          </div>
+          <select id="filter-category" class="filter-select" aria-label="Filtrar por categoria">
+            <option value="Todas">Todas</option>
+            <option value="Alimentação">Alimentação</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Casa">Casa</option>
+            <option value="Lazer">Lazer</option>
+            <option value="Saúde">Saúde</option>
+            <option value="Outros">Outros</option>
+          </select>
+        </div>
+        <div id="expense-list" class="expense-list" aria-live="polite"></div>
+        <div id="empty-state" class="empty-state">
+          <div class="empty-icon">✦</div>
+          <h3>Nenhum gasto por aqui</h3>
+          <p>Adicione seu primeiro lançamento<br>para começar a acompanhar.</p>
+        </div>
+      </section>
+    </section>
+
+    <footer><span>CONTROLE DE GASTOS</span><span>SEU DINHEIRO, SUAS ESCOLHAS.</span></footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
